@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AF92DDB1CB17D5A00342ECF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DD91CB17D5A00342ECF /* Main.storyboard */; };
 		2AF92DDD1CB17D5A00342ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */; };
-		2AF92DE01CB17D5A00342ECF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DDE1CB17D5A00342ECF /* LaunchScreen.storyboard */; };
 		2AF92DF21CB18FF500342ECF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92DF01CB18FF500342ECF /* main.m */; };
 		2AF92DF71CB1911700342ECF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92DF41CB1911700342ECF /* AppDelegate.m */; };
 		2AF92DF81CB1911700342ECF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92DF61CB1911700342ECF /* ViewController.m */; };
@@ -18,9 +16,7 @@
 
 /* Begin PBXFileReference section */
 		2AF92DCD1CB17D5A00342ECF /* GoogleCalendarApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleCalendarApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AF92DDA1CB17D5A00342ECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2AF92DDF1CB17D5A00342ECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AF92DEE1CB18FF500342ECF /* GoogleCalendarApi-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoogleCalendarApi-Prefix.pch"; path = "Sources/GoogleCalendarApi-Prefix.pch"; sourceTree = "<group>"; };
 		2AF92DEF1CB18FF500342ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = "<group>"; };
 		2AF92DF01CB18FF500342ECF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = "<group>"; };
@@ -79,9 +75,7 @@
 				2AF92DF41CB1911700342ECF /* AppDelegate.m */,
 				2AF92DF51CB1911700342ECF /* ViewController.h */,
 				2AF92DF61CB1911700342ECF /* ViewController.m */,
-				2AF92DD91CB17D5A00342ECF /* Main.storyboard */,
 				2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */,
-				2AF92DDE1CB17D5A00342ECF /* LaunchScreen.storyboard */,
 				2AF92DD01CB17D5A00342ECF /* Supporting Files */,
 			);
 			path = GoogleCalendarApi;
@@ -165,9 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AF92DE01CB17D5A00342ECF /* LaunchScreen.storyboard in Resources */,
 				2AF92DDD1CB17D5A00342ECF /* Assets.xcassets in Resources */,
-				2AF92DDB1CB17D5A00342ECF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,25 +225,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		2AF92DD91CB17D5A00342ECF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2AF92DDA1CB17D5A00342ECF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2AF92DDE1CB17D5A00342ECF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2AF92DDF1CB17D5A00342ECF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2AF92DE21CB17D5A00342ECF /* Debug */ = {
