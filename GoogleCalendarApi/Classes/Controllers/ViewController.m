@@ -19,12 +19,32 @@
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
-    
+
+    UIButton *fetchEventsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [fetchEventsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [fetchEventsButton setTitle:@"Fetch events" forState:UIControlStateNormal];
+    [fetchEventsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [fetchEventsButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [fetchEventsButton addTarget:self
+                          action:@selector(didTapFetchEventsButton:)
+                forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:fetchEventsButton];
+
+    [fetchEventsButton autoPinEdgesToSuperviewEdges];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Actions
+
+- (void)didTapFetchEventsButton:(id)sender {
+    [self fetchEvents];
+}
+
+#pragma mark - Loading
+
+- (void)fetchEvents {
+    
 }
 
 @end

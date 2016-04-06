@@ -22,7 +22,7 @@
 		2AF92DEE1CB18FF500342ECF /* GoogleCalendarApi-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoogleCalendarApi-Prefix.pch"; path = "Sources/GoogleCalendarApi-Prefix.pch"; sourceTree = "<group>"; };
 		2AF92DEF1CB18FF500342ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = "<group>"; };
 		2AF92DF01CB18FF500342ECF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = "<group>"; };
-		2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = GoogleCalendarApi/Storyboard.storyboard; sourceTree = "<group>"; };
 		2AF92E041CB1A29C00342ECF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/Delegates/AppDelegate.h; sourceTree = "<group>"; };
 		2AF92E051CB1A29C00342ECF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/Delegates/AppDelegate.m; sourceTree = "<group>"; };
 		2AF92E071CB1A2AD00342ECF /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Classes/Controllers/ViewController.h; sourceTree = "<group>"; };
@@ -58,7 +58,10 @@
 		2AF92DC41CB17D5A00342ECF = {
 			isa = PBXGroup;
 			children = (
-				2AF92DCF1CB17D5A00342ECF /* GoogleCalendarApi */,
+				2AF92E031CB1A28200342ECF /* Classes */,
+				2AF92E0A1CB1A61C00342ECF /* Resources */,
+				2AF92DD01CB17D5A00342ECF /* Sources */,
+				2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */,
 				2AF92DCE1CB17D5A00342ECF /* Products */,
 				27EADB74204BF3BA93A0CC41 /* Pods */,
 				AC41561AB19987D1DC8B8D00 /* Frameworks */,
@@ -73,17 +76,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2AF92DCF1CB17D5A00342ECF /* GoogleCalendarApi */ = {
-			isa = PBXGroup;
-			children = (
-				2AF92E031CB1A28200342ECF /* Classes */,
-				2AF92E0A1CB1A61C00342ECF /* Resources */,
-				2AF92DD01CB17D5A00342ECF /* Sources */,
-				2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */,
-			);
-			path = GoogleCalendarApi;
-			sourceTree = "<group>";
-		};
 		2AF92DD01CB17D5A00342ECF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +84,7 @@
 				2AF92DF01CB18FF500342ECF /* main.m */,
 			);
 			name = Sources;
+			path = GoogleCalendarApi;
 			sourceTree = "<group>";
 		};
 		2AF92DFF1CB1A14100342ECF /* Models */ = {
@@ -137,6 +130,7 @@
 				2AF92DFF1CB1A14100342ECF /* Models */,
 			);
 			name = Classes;
+			path = GoogleCalendarApi;
 			sourceTree = "<group>";
 		};
 		2AF92E0A1CB1A61C00342ECF /* Resources */ = {
@@ -145,6 +139,7 @@
 				2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */,
 			);
 			name = Resources;
+			path = GoogleCalendarApi;
 			sourceTree = "<group>";
 		};
 		AC41561AB19987D1DC8B8D00 /* Frameworks */ = {
