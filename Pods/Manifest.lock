@@ -11,19 +11,25 @@ PODS:
   - GTMSessionFetcher/Core (1.1.0)
   - GTMSessionFetcher/Full (1.1.0):
     - GTMSessionFetcher/Core (= 1.1.0)
+  - HIPNetworking (1.1.0):
+    - TMCache (~> 1.2.0)
   - PureLayout (3.0.1)
+  - TMCache (1.2.4)
 
 DEPENDENCIES:
   - GoogleAPIClient/Calendar
   - GTMOAuth2
+  - HIPNetworking
   - PureLayout
 
 SPEC CHECKSUMS:
   GoogleAPIClient: 1b7cefe1ec31545927957b52a247a76aa680034f
   GTMOAuth2: b3908247eeeb24b9bc90bd12739b4ef072919297
   GTMSessionFetcher: 5185aaf0dc5d4f532a4e55778d99105c66752159
+  HIPNetworking: ef8f18987744381c26bcf51033d3e6edb55c787c
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
 
-PODFILE CHECKSUM: 4427bd697f20d16389dfeecfeb560b39c31b9ddb
+PODFILE CHECKSUM: 33d0269d27bc5ba7f012986fd29ae3a79ba1a98f
 
-COCOAPODS: 1.0.0.beta.4
+COCOAPODS: 1.0.0.beta.5

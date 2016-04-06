@@ -10,4 +10,12 @@
 
 @interface GCAEvent : NSObject
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSDate *endDate;
+
+
+
 @end
