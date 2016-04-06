@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 
+static NSString const *kEventbrideEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
+static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
+
 @interface ViewController ()
 
 @end
@@ -44,7 +47,29 @@
 #pragma mark - Loading
 
 - (void)fetchEvents {
-    
+    HIPNetworkClient *networkClient = [HIPNetworkClient new];
+
+    // Prepare url
+    NSString *requestURLString = [NSString stringWithFormat:@"%@?token=%@",
+                                                                kEventbrideEventsSearchURL,
+                                                                kEventbrideAuthToken];
+
+    NSURL *requestURL = [NSURL URLWithString:requestURLString];
+
+    NSURLRequest *fetchRequest = [networkClient requestWithURL:requestURL
+                                                        method:HIPNetworkClientRequestMethodGet
+                                                          data:nil];
+
+    [networkClient performRequest:fetchRequest
+                    withParseMode:HIPNetworkClientParseModeJSON
+                       identifier:nil
+                        indexPath:nil
+                     cacheResults:NO
+                completionHandler:^(id parsedData, NSURLResponse *response, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"FETCH SUCESS");
+                    }
+                }];
 }
 
 @end
