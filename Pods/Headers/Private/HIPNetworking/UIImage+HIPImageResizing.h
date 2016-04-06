@@ -1,0 +1,1 @@
+../../../HIPNetworking/HIPNetworking/UIImage+HIPImageResizing.h
