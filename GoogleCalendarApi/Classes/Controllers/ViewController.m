@@ -59,8 +59,7 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 #pragma mark - Loading
 
 - (void)fetchEvents {
-    [_activityIndicatorView startAnimating];
-    _fetchEventsButton.hidden = YES;
+    [self showActivityIndicator:YES];
 
     HIPNetworkClient *networkClient = [HIPNetworkClient new];
 
@@ -81,14 +80,22 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                         indexPath:nil
                      cacheResults:NO
                 completionHandler:^(id parsedData, NSURLResponse *response, NSError *error) {
-                    
-                    [_activityIndicatorView stopAnimating];
-                    _fetchEventsButton.hidden = NO;
-
                     if (error == nil) {
                         NSLog(@"FETCH SUCESS");
                     }
+
+                    [self showActivityIndicator:NO];
                 }];
+}
+
+- (void)showActivityIndicator:(BOOL)show {
+    _fetchEventsButton.hidden = show;
+
+    if (show) {
+        [_activityIndicatorView startAnimating];
+    } else {
+        [_activityIndicatorView stopAnimating];
+    }
 }
 
 @end
