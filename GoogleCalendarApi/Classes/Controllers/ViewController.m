@@ -38,7 +38,7 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
     [self.view addSubview:_fetchEventsButton];
 
-    [_fetchEventsButton autoPinEdgesToSuperviewEdges];
+    [_fetchEventsButton autoCenterInSuperview];
 
     // Activity indicator
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initForAutoLayout];
@@ -47,7 +47,7 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
     [self.view addSubview:_activityIndicatorView];
 
-    [_activityIndicatorView autoPinEdgesToSuperviewEdges];
+    [_activityIndicatorView autoCenterInSuperview];
 }
 
 #pragma mark - Actions
