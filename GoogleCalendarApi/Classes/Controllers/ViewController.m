@@ -13,6 +13,9 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
 @interface ViewController ()
 
+@property (nonatomic, strong) UIButton *fetchEventsButton;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+
 @end
 
 @implementation ViewController
@@ -22,20 +25,29 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
+    // Fetch events button
+    _fetchEventsButton = [UIButton buttonWithType:UIButtonTypeCustom];
 
-    UIButton *fetchEventsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [fetchEventsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [fetchEventsButton setTitle:@"Fetch events" forState:UIControlStateNormal];
-    [fetchEventsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [fetchEventsButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-    [fetchEventsButton addTarget:self
+    [_fetchEventsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_fetchEventsButton setTitle:@"Fetch events" forState:UIControlStateNormal];
+    [_fetchEventsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [_fetchEventsButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [_fetchEventsButton addTarget:self
                           action:@selector(didTapFetchEventsButton:)
                 forControlEvents:UIControlEventTouchUpInside];
 
-    [self.view addSubview:fetchEventsButton];
+    [self.view addSubview:_fetchEventsButton];
 
-    [fetchEventsButton autoPinEdgesToSuperviewEdges];
+    [_fetchEventsButton autoPinEdgesToSuperviewEdges];
+
+    // Activity indicator
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initForAutoLayout];
+
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+
+    [self.view addSubview:_activityIndicatorView];
+
+    [_activityIndicatorView autoPinEdgesToSuperviewEdges];
 }
 
 #pragma mark - Actions
@@ -47,6 +59,9 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 #pragma mark - Loading
 
 - (void)fetchEvents {
+    [_activityIndicatorView startAnimating];
+    _fetchEventsButton.hidden = YES;
+
     HIPNetworkClient *networkClient = [HIPNetworkClient new];
 
     // Prepare url
@@ -66,6 +81,10 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                         indexPath:nil
                      cacheResults:NO
                 completionHandler:^(id parsedData, NSURLResponse *response, NSError *error) {
+                    
+                    [_activityIndicatorView stopAnimating];
+                    _fetchEventsButton.hidden = NO;
+
                     if (error == nil) {
                         NSLog(@"FETCH SUCESS");
                     }
