@@ -23,25 +23,29 @@
 }
 
 - (void)parseEventsFromParsedData:(NSDictionary *)parsedData {
-    NSArray *events = parsedData[@"events"];
+    NSArray *eventsData = parsedData[@"events"];
 
-    NSDictionary *anEvent = events[0];
+    NSMutableArray *events = [NSMutableArray array];
 
-    GCAEvent *event = [GCAEvent new];
+    for (NSDictionary *anEvent in eventsData) {
+        GCAEvent *event = [GCAEvent new];
 
-    event.name = anEvent[@"name"][@"text"];
-    event.content = anEvent[@"description"][@"text"];
+        event.name = anEvent[@"name"][@"text"];
+        event.content = anEvent[@"description"][@"text"];
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
 
-    NSString *startDate = anEvent[@"start"][@"local"];
-    event.startDate = [dateFormatter dateFromString:startDate];
+        NSString *startDate = anEvent[@"start"][@"local"];
+        event.startDate = [dateFormatter dateFromString:startDate];
 
-    NSString *endDate = anEvent[@"end"][@"local"];
-    event.endDate = [dateFormatter dateFromString:endDate];
+        NSString *endDate = anEvent[@"end"][@"local"];
+        event.endDate = [dateFormatter dateFromString:endDate];
 
-    NSLog(@"%@", event);
+        [events addObject:event];
+    }
+
+    _events = events;
 }
 
 @end

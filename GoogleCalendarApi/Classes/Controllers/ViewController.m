@@ -91,26 +91,6 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                         NSArray *events = searchResponse.events;
 
                         NSLog(@"%@", events);
-                        
-//                        NSArray *events = parsedData[@"events"];
-//
-//                        NSDictionary *anEvent = events[0];
-//
-//                        GCAEvent *event = [GCAEvent new];
-//
-//                        event.name = anEvent[@"name"][@"text"];
-//                        event.content = anEvent[@"description"][@"text"];
-//
-//                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//                        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-//
-//                        NSString *startDate = anEvent[@"start"][@"local"];
-//                        event.startDate = [dateFormatter dateFromString:startDate];
-//
-//                        NSString *endDate = anEvent[@"end"][@"local"];
-//                        event.endDate = [dateFormatter dateFromString:endDate];
-//
-//                        NSLog(@"%@", event);
                     }
 
                     [self showActivityIndicator:NO];
