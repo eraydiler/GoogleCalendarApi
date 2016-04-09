@@ -55,11 +55,16 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGCAEventCellIdentifier
-                                                            forIndexPath:indexPath];
+      UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:kGCAEventCellIdentifier];
+
     [self configureCell:cell atIndexPath:indexPath];
 
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
 }
 
 #pragma mark - Cell Configuration
