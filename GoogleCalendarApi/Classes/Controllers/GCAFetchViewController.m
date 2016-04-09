@@ -6,23 +6,29 @@
 //  Copyright © 2016 HipoBlog. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GCAFetchViewController.h"
 
 #import "GCAEvent.h"
 #import "GCAEventsSearchResponse.h"
+#import "GCAEventsListViewController.h"
 
 
 static NSString const *kEventbrideEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
 static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
-@interface ViewController ()
+@interface GCAFetchViewController ()
 
 @property (nonatomic, strong) UIButton *fetchEventsButton;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
+- (void)didTapFetchEventsButton:(id)sender;
+- (void)fetchEvents;
+- (void)showActivityIndicator:(BOOL)show;
+- (void)pushEventsList;
+
 @end
 
-@implementation ViewController
+@implementation GCAFetchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -90,6 +96,7 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
                         NSArray *events = searchResponse.events;
 
+                        [self pushEventsList];
                         NSLog(@"%@", events);
                     }
 
@@ -105,6 +112,15 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
     } else {
         [_activityIndicatorView stopAnimating];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)pushEventsList {
+    GCAEventsListViewController *controller = [GCAEventsListViewController new];
+
+    [self.navigationController pushViewController:controller
+                                         animated:YES];
 }
 
 @end
