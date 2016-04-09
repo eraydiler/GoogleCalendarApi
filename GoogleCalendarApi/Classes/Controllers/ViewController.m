@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 #import "GCAEvent.h"
+#import "GCAEventsSearchResponse.h"
+
 
 static NSString const *kEventbrideEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
 static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
@@ -83,25 +85,32 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                      cacheResults:NO
                 completionHandler:^(id parsedData, NSURLResponse *response, NSError *error) {
                     if (error == nil) {
-                        NSArray *events = parsedData[@"events"];
+                        GCAEventsSearchResponse *searchResponse = [[GCAEventsSearchResponse alloc]
+                                                                   initWithParsedData:parsedData];
 
-                        NSDictionary *anEvent = events[0];
+                        NSArray *events = searchResponse.events;
 
-                        GCAEvent *event = [GCAEvent new];
-
-                        event.name = anEvent[@"name"][@"text"];
-                        event.content = anEvent[@"description"][@"text"];
-
-                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-
-                        NSString *startDate = anEvent[@"start"][@"local"];
-                        event.startDate = [dateFormatter dateFromString:startDate];
-
-                        NSString *endDate = anEvent[@"end"][@"local"];
-                        event.endDate = [dateFormatter dateFromString:endDate];
-
-                        NSLog(@"%@", event);
+                        NSLog(@"%@", events);
+                        
+//                        NSArray *events = parsedData[@"events"];
+//
+//                        NSDictionary *anEvent = events[0];
+//
+//                        GCAEvent *event = [GCAEvent new];
+//
+//                        event.name = anEvent[@"name"][@"text"];
+//                        event.content = anEvent[@"description"][@"text"];
+//
+//                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//                        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+//
+//                        NSString *startDate = anEvent[@"start"][@"local"];
+//                        event.startDate = [dateFormatter dateFromString:startDate];
+//
+//                        NSString *endDate = anEvent[@"end"][@"local"];
+//                        event.endDate = [dateFormatter dateFromString:endDate];
+//
+//                        NSLog(@"%@", event);
                     }
 
                     [self showActivityIndicator:NO];
