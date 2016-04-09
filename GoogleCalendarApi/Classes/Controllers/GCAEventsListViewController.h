@@ -10,4 +10,6 @@
 
 @interface GCAEventsListViewController : UITableViewController
 
+- (instancetype)initWithEvents:(NSArray *)events;
+
 @end

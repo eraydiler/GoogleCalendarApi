@@ -24,7 +24,7 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 - (void)didTapFetchEventsButton:(id)sender;
 - (void)fetchEvents;
 - (void)showActivityIndicator:(BOOL)show;
-- (void)pushEventsList;
+- (void)pushEventsListWithEvents:(NSArray *)events;
 
 @end
 
@@ -93,11 +93,9 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                     if (error == nil) {
                         GCAEventsSearchResponse *searchResponse = [[GCAEventsSearchResponse alloc]
                                                                    initWithParsedData:parsedData];
-
                         NSArray *events = searchResponse.events;
 
-                        [self pushEventsList];
-                        NSLog(@"%@", events);
+                        [self pushEventsListWithEvents:events];
                     }
 
                     [self showActivityIndicator:NO];
@@ -116,8 +114,9 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
 #pragma mark - Navigation
 
-- (void)pushEventsList {
-    GCAEventsListViewController *controller = [GCAEventsListViewController new];
+- (void)pushEventsListWithEvents:(NSArray *)events {
+    GCAEventsListViewController *controller = [[GCAEventsListViewController alloc]
+                                               initWithEvents:events];
 
     [self.navigationController pushViewController:controller
                                          animated:YES];
