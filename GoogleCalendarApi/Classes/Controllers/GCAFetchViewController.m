@@ -60,6 +60,10 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
     [_activityIndicatorView autoCenterInSuperview];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_fetchEventsButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
 #pragma mark - Actions
 
 - (void)didTapFetchEventsButton:(id)sender {
