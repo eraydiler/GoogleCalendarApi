@@ -10,10 +10,11 @@
 		2AF92DDD1CB17D5A00342ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */; };
 		2AF92DF21CB18FF500342ECF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92DF01CB18FF500342ECF /* main.m */; };
 		2AF92DFB1CB1A07200342ECF /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */; };
-		2AF92E061CB1A29C00342ECF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E051CB1A29C00342ECF /* AppDelegate.m */; };
-		2AF92E091CB1A2AD00342ECF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E081CB1A2AD00342ECF /* ViewController.m */; };
+		2AF92E061CB1A29C00342ECF /* GCAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E051CB1A29C00342ECF /* GCAAppDelegate.m */; };
+		2AF92E091CB1A2AD00342ECF /* GCAFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E081CB1A2AD00342ECF /* GCAFetchViewController.m */; };
 		2AF92E0D1CB1A6B300342ECF /* GCAEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E0C1CB1A6B300342ECF /* GCAEvent.m */; };
 		2AFA98631CB9667E00925749 /* GCAEventsSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA98621CB9667E00925749 /* GCAEventsSearchResponse.m */; };
+		2AFA98661CB993B900925749 /* GCAEventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA98651CB993B900925749 /* GCAEventsListViewController.m */; };
 		E8DF9CCEC63DA156D5FFBB25 /* libPods-GoogleCalendarApi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E4DBEB9CBF31CEEC09AF55 /* libPods-GoogleCalendarApi.a */; };
 /* End PBXBuildFile section */
 
@@ -24,14 +25,16 @@
 		2AF92DEF1CB18FF500342ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = "<group>"; };
 		2AF92DF01CB18FF500342ECF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = "<group>"; };
 		2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = GoogleCalendarApi/Storyboard.storyboard; sourceTree = "<group>"; };
-		2AF92E041CB1A29C00342ECF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/Delegates/AppDelegate.h; sourceTree = "<group>"; };
-		2AF92E051CB1A29C00342ECF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/Delegates/AppDelegate.m; sourceTree = "<group>"; };
-		2AF92E071CB1A2AD00342ECF /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Classes/Controllers/ViewController.h; sourceTree = "<group>"; };
-		2AF92E081CB1A2AD00342ECF /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Classes/Controllers/ViewController.m; sourceTree = "<group>"; };
+		2AF92E041CB1A29C00342ECF /* GCAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAAppDelegate.h; path = Classes/Delegates/GCAAppDelegate.h; sourceTree = "<group>"; };
+		2AF92E051CB1A29C00342ECF /* GCAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAAppDelegate.m; path = Classes/Delegates/GCAAppDelegate.m; sourceTree = "<group>"; };
+		2AF92E071CB1A2AD00342ECF /* GCAFetchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAFetchViewController.h; path = Classes/Controllers/GCAFetchViewController.h; sourceTree = "<group>"; };
+		2AF92E081CB1A2AD00342ECF /* GCAFetchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAFetchViewController.m; path = Classes/Controllers/GCAFetchViewController.m; sourceTree = "<group>"; };
 		2AF92E0B1CB1A6B300342ECF /* GCAEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAEvent.h; path = Classes/Models/GCAEvent.h; sourceTree = "<group>"; };
 		2AF92E0C1CB1A6B300342ECF /* GCAEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAEvent.m; path = Classes/Models/GCAEvent.m; sourceTree = "<group>"; };
 		2AFA98611CB9667E00925749 /* GCAEventsSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAEventsSearchResponse.h; path = Classes/Models/GCAEventsSearchResponse.h; sourceTree = "<group>"; };
 		2AFA98621CB9667E00925749 /* GCAEventsSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAEventsSearchResponse.m; path = Classes/Models/GCAEventsSearchResponse.m; sourceTree = "<group>"; };
+		2AFA98641CB993B900925749 /* GCAEventsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAEventsListViewController.h; path = Classes/Controllers/GCAEventsListViewController.h; sourceTree = "<group>"; };
+		2AFA98651CB993B900925749 /* GCAEventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAEventsListViewController.m; path = Classes/Controllers/GCAEventsListViewController.m; sourceTree = "<group>"; };
 		4254C3B66082A8991A20AFB8 /* Pods-GoogleCalendarApi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleCalendarApi.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleCalendarApi/Pods-GoogleCalendarApi.release.xcconfig"; sourceTree = "<group>"; };
 		83E4DBEB9CBF31CEEC09AF55 /* libPods-GoogleCalendarApi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoogleCalendarApi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCB633F7AAEC12298C8FEA7 /* Pods-GoogleCalendarApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleCalendarApi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleCalendarApi/Pods-GoogleCalendarApi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,8 +114,10 @@
 		2AF92E011CB1A15700342ECF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2AF92E071CB1A2AD00342ECF /* ViewController.h */,
-				2AF92E081CB1A2AD00342ECF /* ViewController.m */,
+				2AF92E071CB1A2AD00342ECF /* GCAFetchViewController.h */,
+				2AF92E081CB1A2AD00342ECF /* GCAFetchViewController.m */,
+				2AFA98641CB993B900925749 /* GCAEventsListViewController.h */,
+				2AFA98651CB993B900925749 /* GCAEventsListViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -120,8 +125,8 @@
 		2AF92E021CB1A21300342ECF /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				2AF92E041CB1A29C00342ECF /* AppDelegate.h */,
-				2AF92E051CB1A29C00342ECF /* AppDelegate.m */,
+				2AF92E041CB1A29C00342ECF /* GCAAppDelegate.h */,
+				2AF92E051CB1A29C00342ECF /* GCAAppDelegate.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -275,8 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AF92E061CB1A29C00342ECF /* AppDelegate.m in Sources */,
-				2AF92E091CB1A2AD00342ECF /* ViewController.m in Sources */,
+				2AF92E061CB1A29C00342ECF /* GCAAppDelegate.m in Sources */,
+				2AF92E091CB1A2AD00342ECF /* GCAFetchViewController.m in Sources */,
+				2AFA98661CB993B900925749 /* GCAEventsListViewController.m in Sources */,
 				2AF92E0D1CB1A6B300342ECF /* GCAEvent.m in Sources */,
 				2AF92DF21CB18FF500342ECF /* main.m in Sources */,
 				2AFA98631CB9667E00925749 /* GCAEventsSearchResponse.m in Sources */,

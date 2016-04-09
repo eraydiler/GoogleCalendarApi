@@ -6,14 +6,14 @@
 //  Copyright © 2016 HipoBlog. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "ViewController.h"
+#import "GCAAppDelegate.h"
+#import "GCAFetchViewController.h"
 
-@interface AppDelegate ()
+@interface GCAAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation GCAAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -21,7 +21,7 @@
 
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ViewController *controller = [[ViewController alloc] init];
+    GCAFetchViewController *controller = [[GCAFetchViewController alloc] init];
 
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
 
