@@ -99,9 +99,14 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 
     cell.textLabel.text = event.name;
     cell.detailTextLabel.numberOfLines = 4.0;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", event.startDate,
-                                                                          event.endDate,
-                                                                          event.content];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@\n%@",
+                                 [dateFormatter stringFromDate:event.startDate],
+                                 [dateFormatter stringFromDate:event.endDate],
+                                  event.content];
 
     cell.detailTextLabel.enabled = cell.textLabel.enabled = !event.isAdded;
     cell.selectionStyle = (event.isAdded) ? UITableViewCellSelectionStyleNone
