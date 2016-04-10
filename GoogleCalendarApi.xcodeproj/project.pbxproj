@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2AF92DDD1CB17D5A00342ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DDC1CB17D5A00342ECF /* Assets.xcassets */; };
 		2AF92DF21CB18FF500342ECF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92DF01CB18FF500342ECF /* main.m */; };
-		2AF92DFB1CB1A07200342ECF /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */; };
 		2AF92E061CB1A29C00342ECF /* GCAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E051CB1A29C00342ECF /* GCAAppDelegate.m */; };
 		2AF92E091CB1A2AD00342ECF /* GCAFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E081CB1A2AD00342ECF /* GCAFetchViewController.m */; };
 		2AF92E0D1CB1A6B300342ECF /* GCAEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF92E0C1CB1A6B300342ECF /* GCAEvent.m */; };
@@ -24,7 +23,6 @@
 		2AF92DEE1CB18FF500342ECF /* GoogleCalendarApi-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoogleCalendarApi-Prefix.pch"; path = "Sources/GoogleCalendarApi-Prefix.pch"; sourceTree = "<group>"; };
 		2AF92DEF1CB18FF500342ECF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = "<group>"; };
 		2AF92DF01CB18FF500342ECF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = "<group>"; };
-		2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = GoogleCalendarApi/Storyboard.storyboard; sourceTree = "<group>"; };
 		2AF92E041CB1A29C00342ECF /* GCAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAAppDelegate.h; path = Classes/Delegates/GCAAppDelegate.h; sourceTree = "<group>"; };
 		2AF92E051CB1A29C00342ECF /* GCAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAAppDelegate.m; path = Classes/Delegates/GCAAppDelegate.m; sourceTree = "<group>"; };
 		2AF92E071CB1A2AD00342ECF /* GCAFetchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAFetchViewController.h; path = Classes/Controllers/GCAFetchViewController.h; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				2AF92E031CB1A28200342ECF /* Classes */,
 				2AF92E0A1CB1A61C00342ECF /* Resources */,
 				2AF92DD01CB17D5A00342ECF /* Sources */,
-				2AF92DFA1CB1A07200342ECF /* Storyboard.storyboard */,
 				2AF92DCE1CB17D5A00342ECF /* Products */,
 				27EADB74204BF3BA93A0CC41 /* Pods */,
 				AC41561AB19987D1DC8B8D00 /* Frameworks */,
@@ -221,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AF92DDD1CB17D5A00342ECF /* Assets.xcassets in Resources */,
-				2AF92DFB1CB1A07200342ECF /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
