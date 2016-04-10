@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, assign, getter=isAdded) BOOL added;
 
 @end

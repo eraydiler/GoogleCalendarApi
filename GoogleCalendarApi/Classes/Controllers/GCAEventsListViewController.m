@@ -21,7 +21,7 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 @property (nonatomic, strong) NSArray *events;
 @property (nonatomic, strong) GTLServiceCalendar *calendarService;
 @property (nonatomic, strong) GTLCalendarEvent *calendarEvent;
-@property (nonatomic, strong) GCAEvent *selectedEvent;
+@property (nonatomic, strong) NSIndexPath *currentSelectedIndexPath;
 @property (nonatomic, assign) BOOL didCancelGoogleAuthentication;
 
 - (void)configureCell:(UITableViewCell *)cell
@@ -72,11 +72,11 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return 100.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _selectedEvent = _events[indexPath.row];
+    _currentSelectedIndexPath = indexPath;
 
     _calendarService = [[GTLServiceCalendar alloc] init];
 
@@ -98,7 +98,15 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
     GCAEvent *event = _events[indexPath.row];
 
     cell.textLabel.text = event.name;
-    cell.detailTextLabel.text = event.content;
+    cell.detailTextLabel.numberOfLines = 4.0;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", event.startDate,
+                                                                          event.endDate,
+                                                                          event.content];
+
+    cell.detailTextLabel.enabled = cell.textLabel.enabled = !event.isAdded;
+    cell.selectionStyle = (event.isAdded) ? UITableViewCellSelectionStyleNone
+                                          : UITableViewCellSelectionStyleDefault;
+
 }
 
 #pragma mark - Google Calendar
@@ -175,13 +183,19 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 }
 
 - (void)addEventToGoogleCalendar {
+    GCAEvent *selectedEvent = _events[_currentSelectedIndexPath.row];
+
+    if (selectedEvent.isAdded) {
+        return;
+    }
+
     _calendarEvent = [[GTLCalendarEvent alloc] init];
 
-    [_calendarEvent setSummary:_selectedEvent.name];
-    [_calendarEvent setDescriptionProperty:_selectedEvent.content];
+    [_calendarEvent setSummary:selectedEvent.name];
+    [_calendarEvent setDescriptionProperty:selectedEvent.content];
 
-    NSDate *startDate = _selectedEvent.startDate;
-    NSDate *endDate = _selectedEvent.endDate;
+    NSDate *startDate = selectedEvent.startDate;
+    NSDate *endDate = selectedEvent.endDate;
 
     if (endDate == nil) {
         endDate = [startDate dateByAddingTimeInterval:(60 * 60)];
@@ -205,12 +219,15 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
     [self showAlertWithTitle:nil
                   andMessage:NSLocalizedString(@"Adding Event…", nil)];
 
-
     [_calendarService executeQuery:insertQuery
                  completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                      if (error == nil) {
                          [self showAlertWithTitle:nil
                                        andMessage:NSLocalizedString(@"Event Added!", nil)];
+
+                         selectedEvent.added = YES;
+                         [self.tableView reloadRowsAtIndexPaths:@[_currentSelectedIndexPath]
+                                               withRowAnimation:YES];
                      } else {
                          [self showAlertWithTitle:NSLocalizedString(@"Event Entry Failed", nil)
                                        andMessage:NSLocalizedString(@"Could not add event, please try again.", nil)];
