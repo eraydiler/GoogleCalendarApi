@@ -15,5 +15,7 @@
 
 #import <PureLayout/PureLayout.h>
 #import <HIPNetworking/HIPNetworkClient.h>
+#import <GoogleAPIClient/GTLCalendar.h>
+#import <GTMOAuth2/GTMOAuth2ViewControllerTouch.h>
 
 #endif /* GoogleCalendarApi_Prefix_pch */

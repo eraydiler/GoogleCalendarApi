@@ -9,12 +9,20 @@
 #import "GCAEventsListViewController.h"
 #import "GCAEvent.h"
 
+static NSString * const kGoogleAPIClientID = @"";
+static NSString * const kGoogleAPICalendarID = @"primary";
+static NSString * const kGoogleAPIKeychainItemName = @"Google Calendar API";
+
 NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 
 
 @interface GCAEventsListViewController ()
 
 @property (nonatomic, strong) NSArray *events;
+@property (nonatomic, strong) GTLServiceCalendar *calendarService;
+@property (nonatomic, strong) GTLCalendarEvent *calendarEvent;
+@property (nonatomic, strong) GCAEvent *selectedEvent;
+@property (nonatomic, assign) BOOL didCancelGoogleAuthentication;
 
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath;
@@ -67,6 +75,23 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
     return 60.0;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _selectedEvent = _events[indexPath.row];
+
+    _calendarService = [[GTLServiceCalendar alloc] init];
+
+    _calendarService.authorizer = [GTMOAuth2ViewControllerTouch
+                                   authForGoogleFromKeychainForName:kGoogleAPIKeychainItemName
+                                   clientID:kGoogleAPIClientID
+                                   clientSecret:nil];
+
+    if (!_calendarService.authorizer.canAuthorize) {
+        [self launchGoogleAuthenticationView];
+    } else {
+        [self addEventToGoogleCalendar];
+    }
+}
+
 #pragma mark - Cell Configuration
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -74,6 +99,145 @@ NSString * const kGCAEventCellIdentifier = @"kGCAEventCellIdentifier";
 
     cell.textLabel.text = event.name;
     cell.detailTextLabel.text = event.content;
+}
+
+#pragma mark - Google Calendar
+
+- (void)didTapCloseButton:(id)sender {
+    NSLog(@"CLOSE BUTTON TAPPED");
+}
+
+- (void)launchGoogleAuthenticationView {
+    _didCancelGoogleAuthentication = NO;
+
+    GTMOAuth2ViewControllerTouch *authController;
+
+    // If modifying these scopes, delete your previously saved credentials by
+    // resetting the iOS simulator or uninstall the app.
+    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeCalendar, nil];
+
+    authController = [[GTMOAuth2ViewControllerTouch alloc]
+                      initWithScope:[scopes componentsJoinedByString:@" "]
+                      clientID:kGoogleAPIClientID
+                      clientSecret:nil
+                      keychainItemName:kGoogleAPIKeychainItemName
+                      delegate:self
+                      finishedSelector:@selector(googleAuthenticationViewController:finishedWithAuth:error:)];
+
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [closeButton setTitle:@"Cancel" forState:UIControlStateNormal];
+
+    [closeButton addTarget:self
+                    action:@selector(didTapCloseButton:)
+          forControlEvents:UIControlEventTouchUpInside];
+
+    UIBarButtonItem *closeButtonItem = [[UIBarButtonItem alloc]
+                                         initWithCustomView:closeButton];
+
+    [authController.navigationItem setLeftBarButtonItem:closeButtonItem];
+
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:authController];
+
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
+}
+
+- (void)googleAuthenticationViewController:(GTMOAuth2ViewControllerTouch *)authViewController
+                          finishedWithAuth:(GTMOAuth2Authentication *)authResult
+                                     error:(NSError *)error {
+
+    if (_didCancelGoogleAuthentication) {
+        return;
+    }
+
+    if (error != nil) {
+        UIAlertView *alert;
+
+        alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Authentication Error", nil)
+                                           message:error.localizedDescription
+                                          delegate:nil
+                                 cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                 otherButtonTitles:nil];
+        [alert show];
+
+        _calendarService.authorizer = nil;
+    } else {
+        _calendarService.authorizer = authResult;
+
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{
+                                     [self addEventToGoogleCalendar];
+                                 }];
+    }
+}
+
+- (void)addEventToGoogleCalendar {
+    _calendarEvent = [[GTLCalendarEvent alloc] init];
+
+    [_calendarEvent setSummary:_selectedEvent.name];
+    [_calendarEvent setDescriptionProperty:_selectedEvent.content];
+
+    NSDate *startDate = _selectedEvent.startDate;
+    NSDate *endDate = _selectedEvent.endDate;
+
+    if (endDate == nil) {
+        endDate = [startDate dateByAddingTimeInterval:(60 * 60)];
+    }
+
+    GTLDateTime *startTime = [GTLDateTime dateTimeWithDate:startDate
+                                                  timeZone:[NSTimeZone systemTimeZone]];
+
+    [_calendarEvent setStart:[GTLCalendarEventDateTime object]];
+    [_calendarEvent.start setDateTime:startTime];
+
+    GTLDateTime *endTime = [GTLDateTime dateTimeWithDate:endDate
+                                                timeZone:[NSTimeZone systemTimeZone]];
+
+    [_calendarEvent setEnd:[GTLCalendarEventDateTime object]];
+    [_calendarEvent.end setDateTime:endTime];
+
+
+    GTLQueryCalendar *insertQuery = [GTLQueryCalendar queryForEventsInsertWithObject:_calendarEvent
+                                                                          calendarId:kGoogleAPICalendarID];
+    [self showAlertWithTitle:nil
+                  andMessage:NSLocalizedString(@"Adding Event…", nil)];
+
+
+    [_calendarService executeQuery:insertQuery
+                 completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                     if (error == nil) {
+                         [self showAlertWithTitle:nil
+                                       andMessage:NSLocalizedString(@"Event Added!", nil)];
+                     } else {
+                         [self showAlertWithTitle:NSLocalizedString(@"Event Entry Failed", nil)
+                                       andMessage:NSLocalizedString(@"Could not add event, please try again.", nil)];
+                     }
+                 }];
+}
+
+#pragma mark - Helpers
+
+- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertView *alert;
+
+    alert = [[UIAlertView alloc] initWithTitle:title
+                                       message:message
+                                      delegate:nil
+                             cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                             otherButtonTitles:nil];
+    [alert show];
+
+    [self performSelector:@selector(dismissAletView:)
+               withObject:alert
+               afterDelay:2.0];
+}
+
+- (void)dismissAletView:(UIAlertView *)alertView {
+    [alertView dismissWithClickedButtonIndex:0
+                                    animated:YES];
 }
 
 @end
