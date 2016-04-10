@@ -96,6 +96,14 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
                         NSArray *events = searchResponse.events;
 
                         [self pushEventsListWithEvents:events];
+                    } else {
+                        UIAlertView *alert = [[UIAlertView alloc]
+                                              initWithTitle:NSLocalizedString(@"Fethcing Failed", nil)
+                                                    message:error.localizedDescription
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                          otherButtonTitles:nil];
+                        [alert show];
                     }
 
                     [self showActivityIndicator:NO];
