@@ -9,7 +9,7 @@
 #import "GCAEventsListViewController.h"
 #import "GCAEvent.h"
 
-static NSString * const kGoogleAPIClientID = @"";
+static NSString * const kGoogleAPIClientID = @"<your-client-id>";
 static NSString * const kGoogleAPICalendarID = @"primary";
 static NSString * const kGoogleAPIKeychainItemName = @"Google Calendar API";
 
