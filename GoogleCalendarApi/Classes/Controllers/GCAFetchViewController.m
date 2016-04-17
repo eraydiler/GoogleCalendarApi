@@ -14,7 +14,7 @@
 
 
 static NSString const *kEventbriteEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
-static NSString const *kEventbriteAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
+static NSString const *kEventbriteAuthToken = @"<your-eventbrite-oauth-token>";
 
 @interface GCAFetchViewController ()
 
