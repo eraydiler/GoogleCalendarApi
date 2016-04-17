@@ -13,8 +13,8 @@
 #import "GCAEventsListViewController.h"
 
 
-static NSString const *kEventbrideEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
-static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
+static NSString const *kEventbriteEventsSearchURL = @"https://www.eventbriteapi.com/v3/events/search/";
+static NSString const *kEventbriteAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
 @interface GCAFetchViewController ()
 
@@ -75,8 +75,8 @@ static NSString const *kEventbrideAuthToken = @"P7JYFMA5ZWTJBVQ4T6BI";
 
     // Prepare url
     NSString *requestURLString = [NSString stringWithFormat:@"%@?token=%@",
-                                                                kEventbrideEventsSearchURL,
-                                                                kEventbrideAuthToken];
+                                                                kEventbriteEventsSearchURL,
+                                                                kEventbriteAuthToken];
 
     NSURL *requestURL = [NSURL URLWithString:requestURLString];
 
