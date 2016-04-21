@@ -3,4 +3,5 @@ target 'GoogleCalendarApi' do
     pod 'GoogleAPIClient/Calendar'
     pod 'GTMOAuth2'
     pod 'HIPNetworking'
+    pod 'JGProgressHUD'
 end

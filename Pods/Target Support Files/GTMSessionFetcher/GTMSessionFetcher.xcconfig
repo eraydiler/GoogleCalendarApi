@@ -1,6 +1,6 @@
 CONFIGURATION_BUILD_DIR = $PODS_SHARED_BUILD_DIR/GTMSessionFetcher
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/GTMSessionFetcher" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GTMOAuth2" "${PODS_ROOT}/Headers/Public/GTMSessionFetcher" "${PODS_ROOT}/Headers/Public/GoogleAPIClient" "${PODS_ROOT}/Headers/Public/HIPNetworking" "${PODS_ROOT}/Headers/Public/PureLayout" "${PODS_ROOT}/Headers/Public/TMCache"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/GTMSessionFetcher" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GTMOAuth2" "${PODS_ROOT}/Headers/Public/GTMSessionFetcher" "${PODS_ROOT}/Headers/Public/GoogleAPIClient" "${PODS_ROOT}/Headers/Public/HIPNetworking" "${PODS_ROOT}/Headers/Public/JGProgressHUD" "${PODS_ROOT}/Headers/Public/PureLayout" "${PODS_ROOT}/Headers/Public/TMCache"
 OTHER_LDFLAGS = -framework "Security"
 PODS_ROOT = ${SRCROOT}
 PODS_SHARED_BUILD_DIR = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

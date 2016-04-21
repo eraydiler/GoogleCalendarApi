@@ -81,9 +81,11 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "JGProgressHUD/JGProgressHUD/JGProgressHUD/JGProgressHUD Resources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "JGProgressHUD/JGProgressHUD/JGProgressHUD/JGProgressHUD Resources.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
